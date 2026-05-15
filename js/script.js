@@ -466,27 +466,6 @@ $$('.filter-btn[data-filter]').forEach(btn => {
   });
 });
 
-function closeAllDropdowns() {
-  $$('.filter-dropdown-menu').forEach(m => m.classList.remove('open'));
-  document.body.classList.remove('dropdown-open');
-}
-
-/* Dropdown item selection */
-$$('.fdm-item[data-filter]').forEach(item => {
-  item.addEventListener('click', e => {
-    e.stopPropagation();
-    currentFilter = item.dataset.filter;
-    currentSort   = null;
-    visibleCount  = 8;
-    $$('.fdm-item').forEach(i => i.classList.remove('selected'));
-    item.classList.add('selected');
-    $$('.filter-btn').forEach(b => b.classList.remove('active'));
-    $('filterAll').classList.add('active');
-    renderProducts();
-    closeAllDropdowns();
-  });
-});
-
 $('filterBs').addEventListener('click', () => {
   currentSort   = currentSort === 'bestseller' ? null : 'bestseller';
   currentFilter = 'all';
@@ -506,33 +485,6 @@ $('filterNew').addEventListener('click', () => {
 });
 
 $('loadMoreBtn').addEventListener('click', () => { visibleCount += 8; renderProducts(); });
-
-/*
- * Dropdown toggle — single document-level handler covers desktop click
- * and mobile synthesised click. Checks the target before acting:
- *   • outside dropdown        → close
- *   • inside menu (fdm-item)  → do nothing (fdm-item handler already ran)
- *   • inside trigger button   → toggle
- */
-document.addEventListener('click', e => {
-  const dd     = e.target.closest('.filter-dropdown');
-  const inMenu = e.target.closest('.filter-dropdown-menu');
-
-  if (!dd) {
-    closeAllDropdowns();
-    return;
-  }
-  if (inMenu) return; /* fdm-item click handler already closed it */
-
-  /* Trigger button tapped/clicked */
-  const menu = dd.querySelector('.filter-dropdown-menu');
-  const willOpen = !menu.classList.contains('open');
-  closeAllDropdowns();
-  if (willOpen) {
-    menu.classList.add('open');
-    document.body.classList.add('dropdown-open');
-  }
-});
 
 /* ══════════════════════════════
    PRODUCT MODAL
