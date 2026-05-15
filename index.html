@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Joyería premium en oro laminado. Diseños exclusivos, resistentes al agua. Envíos a todo México.">
+  <meta name="keywords" content="joyería, aretes, anillos, pulseras, collares, oro laminado, México">
+  <meta property="og:title" content="MARARE — Joyería que eleva cada momento">
+  <meta property="og:description" content="Piezas únicas de acero inoxidable con baño de oro 18k. Resistentes al agua. Envíos a todo MX.">
+  <meta property="og:type" content="website">
+  <title>MARARE — Joyería que eleva cada momento</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div id="announce">
+    <p>
+      <span>&#9670;</span>
+      <span data-i18n="ann">ENVÍOS GRATIS EN PEDIDOS MAYORES A $599 MXN</span>
+      <span>&#9670;</span>
+    </p>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+
+      <div class="nav-logo">
+        <span class="nav-logo-name">MARARE</span>
+        <span class="nav-logo-sub" data-i18n="nav.sub">Joyería</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="#tienda" data-i18n="nav.tienda">Tienda</a></li>
+        <li><a href="#nosotras" data-i18n="nav.nosotras">Nosotros</a></li>
+        <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="nav-lang">
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="https://wa.me/527445875253"
+           target="_blank" rel="noopener"
+           class="nav-wa-btn"
+           data-i18n="nav.wa">Pedir por WhatsApp</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div id="mobileNav" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="#" class="mobile-nav-link" data-i18n="nav.inicio">Inicio</a></li>
+      <li><a href="#tienda" class="mobile-nav-link" data-i18n="nav.tienda">Tienda</a></li>
+      <li><a href="#nosotras" class="mobile-nav-link" data-i18n="nav.nosotras">Nosotros</a></li>
+      <li><a href="#contacto" class="mobile-nav-link" data-i18n="nav.contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/527445875253"
+       target="_blank" rel="noopener"
+       class="mobile-nav-wa">
+      Pedir por WhatsApp &#8594;
+    </a>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div id="modalOverlay"></div>
+  <div id="productModal">
+
+    <div class="modal-gallery" id="modalGallery">
+      <button class="modal-close" id="modalClose">&#10005;</button>
+      <div class="img-wrap modal-main-img" style="flex:1;min-height:320px">
+        <img id="modalMainImgEl"
+             src="assets/images/placeholder.svg"
+             alt="Producto MARARE"
+             onerror="this.src='assets/images/placeholder.svg'">
+      </div>
+      <div class="modal-thumbs" id="modalThumbs"></div>
+    </div>
+
+    <div class="modal-info" id="modalInfo">
+      <span class="modal-category" id="modalCat"></span>
+      <h2 class="modal-name" id="modalName"></h2>
+      <p class="modal-price" id="modalPrice"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <div class="modal-colors" id="modalColors"></div>
+      <p class="modal-availability" data-i18n="modal.stock">En stock · Envíos a todo México</p>
+      <a class="modal-wa-cta" id="modalWaBtn" href="#" target="_blank" rel="noopener">
+        <span data-i18n="modal.wa">Solicitar por WhatsApp</span>
+        <span class="modal-wa-arrow">&#8594;</span>
+      </a>
+      <p class="modal-wa-note" data-i18n="modal.note">Respuesta en menos de 24 horas</p>
+    </div>
+
+  </div>
+
+  <!-- 1. HERO -->
+  <section id="hero">
+
+    <div class="hero-left">
+      <div class="img-wrap r-hero" style="height:100%;min-height:500px">
+        <img src="assets/images/hero/hero-1.jpg"
+             alt="MARARE Joyería — Modelo"
+             class="hero-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="ph r-hero" style="display:none;height:100%;min-height:500px">
+          <span class="ph-tag">HERO 1</span>
+          <span class="ph-lbl">assets/images/hero/hero-1.jpg&#10;Formato recomendado: 4:5 vertical</span>
+        </div>
+      </div>
+      <div class="hero-img-overlay"></div>
+    </div>
+
+    <div class="hero-right">
+      <span class="section-label" data-i18n="hero.eyebrow">
+        Joyería premium · Hecho en México
+      </span>
+      <h1 class="hero-h1">
+        <span data-i18n="hero.t1">Joyería que</span><br>
+        <em data-i18n="hero.t2">eleva cada momento.</em>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub">
+        Diseños que realzan tu esencia. Oro laminado, resistente al agua, hipoalergénico.
+      </p>
+      <div class="hero-btns">
+        <button onclick="document.getElementById('tienda').scrollIntoView({behavior:'smooth'})"
+                class="btn btn-solid" data-i18n="hero.cta1">
+          Ver Colección
+        </button>
+        <a href="https://wa.me/527445875253"
+           target="_blank" rel="noopener"
+           class="btn btn-outline" data-i18n="hero.cta2">
+          Solicitar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 2. BENEFITS BAR -->
+  <div id="benefits">
+    <div class="benefits-inner">
+      <div class="benefit-item reveal">
+        <span class="benefit-icon">&#9670;</span>
+        <div class="benefit-text">
+          <strong data-i18n="ben.1t">Acero Premium</strong>
+          <span data-i18n="ben.1s">Baño de oro 18k</span>
+        </div>
+      </div>
+      <div class="benefit-item reveal reveal-d1">
+        <span class="benefit-icon">&#9671;</span>
+        <div class="benefit-text">
+          <strong data-i18n="ben.2t">Diseños Exclusivos</strong>
+          <span data-i18n="ben.2s">Hechos para ti</span>
+        </div>
+      </div>
+      <div class="benefit-item reveal reveal-d2">
+        <span class="benefit-icon">&#9645;</span>
+        <div class="benefit-text">
+          <strong data-i18n="ben.3t">Pago Seguro</strong>
+          <span data-i18n="ben.3s">Compra 100% segura</span>
+        </div>
+      </div>
+      <div class="benefit-item reveal reveal-d3">
+        <span class="benefit-icon">&#9711;</span>
+        <div class="benefit-text">
+          <strong data-i18n="ben.4t">Envíos a Todo MX</strong>
+          <span data-i18n="ben.4s">Rápidos y confiables</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- 3. TIENDA / CATÁLOGO -->
+  <section id="tienda">
+    <div class="container">
+
+      <div class="tienda-header">
+        <div class="tienda-title-block reveal">
+          <span class="section-label" data-i18n="tienda.label">Colecciones</span>
+          <h2 data-i18n="tienda.title">Nuestro Stock &amp; Catálogo</h2>
+        </div>
+        <div class="filters-row reveal reveal-d1">
+          <div class="filter-dropdown" id="fdType">
+            <button class="filter-btn" data-i18n="filter.type">Tipo de accesorio ▾</button>
+            <div class="filter-dropdown-menu">
+              <span class="fdm-item" data-filter="all"      data-i18n="filter.all">Todos</span>
+              <span class="fdm-item" data-filter="aretes"   data-i18n="filter.aretes">Aretes</span>
+              <span class="fdm-item" data-filter="anillos"  data-i18n="filter.anillos">Anillos</span>
+              <span class="fdm-item" data-filter="pulseras" data-i18n="filter.pulseras">Pulseras</span>
+              <span class="fdm-item" data-filter="collares" data-i18n="filter.collares">Collares</span>
+            </div>
+          </div>
+          <button class="filter-btn active" data-filter="all" id="filterAll"
+                  data-i18n="filter.all">Todos</button>
+          <button class="filter-btn" data-sort="bestseller" id="filterBs"
+                  data-i18n="filter.bs">Best Sellers</button>
+          <button class="filter-btn" data-sort="new" id="filterNew"
+                  data-i18n="filter.new">New Arrivals</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+
+      <div class="tienda-load-more reveal">
+        <button class="btn btn-outline" id="loadMoreBtn"
+                data-i18n="tienda.more">
+          Ver Más Productos
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. BRAND STORY -->
+  <section id="nosotras">
+    <div class="container">
+      <div class="brand-grid">
+
+        <div class="reveal">
+          <div class="brand-imgs">
+            <div class="brand-img-1">
+              <div class="img-wrap r-pt">
+                <img src="assets/images/brand/brand-1.jpg"
+                     alt="MARARE Brand"
+                     class="brand-img"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="ph r-pt" style="display:none">
+                  <span class="ph-tag">BRAND 1</span>
+                  <span class="ph-lbl">assets/images/brand/&#10;brand-1.jpg</span>
+                </div>
+              </div>
+            </div>
+            <div class="brand-img-2">
+              <div class="img-wrap r-pt">
+                <img src="assets/images/brand/brand-2.jpg"
+                     alt="MARARE Essence"
+                     class="brand-img"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="ph r-pt" style="display:none">
+                  <span class="ph-tag">BRAND 2</span>
+                  <span class="ph-lbl">assets/images/brand/&#10;brand-2.jpg</span>
+                </div>
+              </div>
+            </div>
+            <div class="brand-accent"></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-d2">
+          <span class="section-label" style="color:rgba(201,169,110,.75)"
+                data-i18n="brand.label">Esencia Marare</span>
+          <h2 class="brand-title" data-i18n="brand.title">
+            Cada pieza diseñada para acompañar tu esencia y resaltar tu luz.
+          </h2>
+          <p class="brand-p" data-i18n="brand.p1">
+            MARARE nace del amor por el mar, la feminidad y la fuerza que hay en cada mujer.
+          </p>
+          <p class="brand-quote" data-i18n="brand.quote">
+            "Inspirada en la fuerza y dedicatoria que hay en ti. Piezas únicas, como tú."
+          </p>
+          <div class="brand-badges">
+            <div class="brand-badge">
+              <span class="brand-badge-icon">&#9671;</span>
+              <span class="brand-badge-txt" data-i18n="ben.1t">Acero Inoxidable</span>
+            </div>
+            <div class="brand-badge">
+              <span class="brand-badge-icon">&#9711;</span>
+              <span class="brand-badge-txt" data-i18n="brand.b2">Resistente al Agua</span>
+            </div>
+            <div class="brand-badge">
+              <span class="brand-badge-icon">&#9670;</span>
+              <span class="brand-badge-txt" data-i18n="brand.b3">Empaque Premium</span>
+            </div>
+            <div class="brand-badge">
+              <span class="brand-badge-icon">&#9645;</span>
+              <span class="brand-badge-txt" data-i18n="ben.3t">Pago Seguro</span>
+            </div>
+          </div>
+          <a href="https://wa.me/527445875253"
+             target="_blank" rel="noopener"
+             class="btn btn-outline-dark" data-i18n="brand.cta">
+            Solicitar por WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. EDITORIAL -->
+  <section id="editorial">
+    <div class="container">
+
+      <div class="section-header reveal"
+           style="text-align:center;margin-bottom:56px">
+        <span class="section-label" data-i18n="editorial.label">Editorial</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,50px);font-weight:400;color:var(--dark);margin-bottom:10px"
+            data-i18n="editorial.title">Así se lleva MARARE</h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--muted)"
+           data-i18n="editorial.sub">Campaña editorial — Colección actual</p>
+      </div>
+
+      <div class="editorial-grid reveal">
+
+        <div class="ed-main">
+          <div class="img-wrap" style="height:100%;min-height:560px">
+            <img src="assets/images/editorial/editorial-1.jpg"
+                 alt="MARARE Editorial"
+                 class="editorial-img"
+                 style="height:100%;min-height:560px"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="ph" style="display:none;height:100%;min-height:560px">
+              <span class="ph-tag">ED 1</span>
+              <span class="ph-lbl">assets/images/editorial/&#10;editorial-1.jpg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ed-secondary">
+          <div class="img-wrap r-sq">
+            <img src="assets/images/editorial/editorial-2.jpg"
+                 alt="MARARE Editorial 2"
+                 class="editorial-img"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="ph r-sq" style="display:none">
+              <span class="ph-tag">ED 2</span>
+              <span class="ph-lbl">assets/images/editorial/&#10;editorial-2.jpg</span>
+            </div>
+          </div>
+          <div class="img-wrap r-sq">
+            <img src="assets/images/editorial/editorial-3.jpg"
+                 alt="MARARE Editorial 3"
+                 class="editorial-img"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="ph r-sq" style="display:none">
+              <span class="ph-tag">ED 3</span>
+              <span class="ph-lbl">assets/images/editorial/&#10;editorial-3.jpg</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. AMBASSADOR CATALOGS -->
+  <section id="catalogo-embajadoras">
+    <div class="container">
+
+      <div class="cat-emb-intro">
+        <div class="reveal">
+          <span class="section-label" data-i18n="emb.label">Embajadoras</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,44px);font-weight:400;color:var(--dark);line-height:1.2;margin-bottom:16px"
+              data-i18n="emb.title">Para ver más modelos</h2>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--muted);font-style:italic"
+             data-i18n="emb.sub">Ve los catálogos de nuestras embajadoras</p>
+        </div>
+        <div class="reveal reveal-d1">
+          <p class="cat-emb-desc" data-i18n="emb.desc">
+            Cada embajadora tiene una selección diferente de piezas y estilos MARARE.
+          </p>
+          <div class="cat-emb-note">
+            <p data-i18n="emb.note">
+              Si te interesa algún modelo en específico, da clic en el botón de WhatsApp
+              debajo del catálogo para solicitarlo directamente.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-cards">
+
+        <div class="phone-card reveal">
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="assets/images/ambassadors/renata.jpg"
+                     alt="Renata — @renatagalee"
+                     onerror="this.style.display='none'">
+              </div>
+            </div>
+          </div>
+          <div class="phone-card-body">
+            <p class="phone-card-name">Renata</p>
+            <p class="phone-card-handle">@renatagalee</p>
+            <div class="phone-card-btns">
+              <button class="phone-cat-btn"
+                      onclick="window.open('https://www.instagram.com/renatagalee/','_blank')"
+                      data-i18n="emb.catBtn">Ver Catálogo</button>
+              <button class="phone-wa-btn"
+                      onclick="window.open('https://wa.me/527445875253','_blank')">
+                <span data-i18n="emb.askBtn">Solicitar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card reveal reveal-d1">
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="assets/images/ambassadors/aranzza.jpg"
+                     alt="Aranzza — @aranzaa_arrieta"
+                     onerror="this.style.display='none'">
+              </div>
+            </div>
+          </div>
+          <div class="phone-card-body">
+            <p class="phone-card-name">Aranzza</p>
+            <p class="phone-card-handle">@aranzaa_arrieta</p>
+            <div class="phone-card-btns">
+              <button class="phone-cat-btn"
+                      onclick="window.open('https://www.instagram.com/aranzaa_arrieta/','_blank')"
+                      data-i18n="emb.catBtn">Ver Catálogo</button>
+              <button class="phone-wa-btn"
+                      onclick="window.open('https://wa.me/527445875253','_blank')">
+                <span data-i18n="emb.askBtn">Solicitar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card reveal reveal-d2">
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="assets/images/ambassadors/marare-official.jpg"
+                     alt="@marare.mx"
+                     onerror="this.style.display='none'">
+              </div>
+            </div>
+          </div>
+          <div class="phone-card-body">
+            <p class="phone-card-name">MARARE</p>
+            <p class="phone-card-handle">@marare.mx</p>
+            <div class="phone-card-btns">
+              <button class="phone-cat-btn"
+                      onclick="window.open('https://www.instagram.com/marare.mx/','_blank')"
+                      data-i18n="emb.catBtn">Ver Catálogo</button>
+              <button class="phone-wa-btn"
+                      onclick="window.open('https://wa.me/527445875253','_blank')">
+                <span data-i18n="emb.askBtn">Solicitar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card reveal reveal-d3">
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="assets/images/ambassadors/valeria.jpg"
+                     alt="Valeria — Embajadora MARARE"
+                     onerror="this.style.display='none'">
+              </div>
+            </div>
+          </div>
+          <div class="phone-card-body">
+            <p class="phone-card-name">Valeria</p>
+            <p class="phone-card-handle">@valeria.marare</p>
+            <div class="phone-card-btns">
+              <button class="phone-cat-btn" data-i18n="emb.catBtn">Ver Catálogo</button>
+              <button class="phone-wa-btn"
+                      onclick="window.open('https://wa.me/527445875253','_blank')">
+                <span data-i18n="emb.askBtn">Solicitar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. B2B + AMBASSADOR CTA -->
+  <section id="b2b-ambassador">
+    <div class="container">
+      <div class="b2a-grid">
+
+        <div class="b2a-card b2a-card-1 reveal">
+          <div class="b2a-content">
+            <span class="b2a-tag" data-i18n="b2b.tag">Para Negocios</span>
+            <h3 class="b2a-h3" data-i18n="b2b.title">
+              ¿Quieres vender MARARE en tu negocio?
+            </h3>
+            <p class="b2a-p" data-i18n="b2b.p">
+              Ofrecemos alianzas para boutiques y tiendas que busquen accesorios elegantes,
+              modernos y en tendencia.
+            </p>
+            <div class="b2a-benefits">
+              <div class="b2a-benefit">
+                <span class="b2a-benefit-icon">&#9671;</span>
+                <span data-i18n="b2b.b1">Oro laminado dorado y plateado</span>
+              </div>
+              <div class="b2a-benefit">
+                <span class="b2a-benefit-icon">&#9670;</span>
+                <span data-i18n="b2b.b2">Diseños exclusivos</span>
+              </div>
+              <div class="b2a-benefit">
+                <span class="b2a-benefit-icon">&#9711;</span>
+                <span data-i18n="b2b.b3">Apoyo en publicidad</span>
+              </div>
+              <div class="b2a-benefit">
+                <span class="b2a-benefit-icon">&#9645;</span>
+                <span data-i18n="b2b.b4">Marca MARARE o personalizada</span>
+              </div>
+            </div>
+          </div>
+          <div class="b2a-media">
+            <div class="img-wrap r-wide" style="max-width:280px;margin-bottom:24px">
+              <img src="assets/images/brand/b2b-packaging.jpg"
+                   alt="MARARE Empaque Premium"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="ph r-wide" style="display:none;max-width:280px">
+                <span class="ph-tag">B2B</span>
+                <span class="ph-lbl">assets/images/brand/&#10;b2b-packaging.jpg</span>
+              </div>
+            </div>
+            <button onclick="window.open('https://wa.me/527445875253','_blank')"
+                    class="btn btn-solid" data-i18n="b2b.cta">
+              Solicitar Información
+            </button>
+          </div>
+        </div>
+
+        <div class="b2a-card b2a-card-2 reveal reveal-d2">
+          <div class="b2a-content">
+            <span class="b2a-tag" data-i18n="amb.tag">Únete</span>
+            <h3 class="b2a-h3" data-i18n="amb.title">
+              ¿Te gustaría ser Embajadora MARARE?
+            </h3>
+            <p class="b2a-p" data-i18n="amb.p">
+              Buscamos creadoras de contenido y mujeres con estilo auténtico que quieran
+              representar la marca y crecer junto a nuestra comunidad.
+            </p>
+            <div class="amb-benefits-grid">
+              <div class="amb-benefit-item">
+                <span class="amb-benefit-icon">&#9671;</span>
+                <span class="amb-benefit-lbl" data-i18n="amb.b1">Comunidad</span>
+              </div>
+              <div class="amb-benefit-item">
+                <span class="amb-benefit-icon">&#9670;</span>
+                <span class="amb-benefit-lbl" data-i18n="amb.b2">Beneficios exclusivos</span>
+              </div>
+              <div class="amb-benefit-item">
+                <span class="amb-benefit-icon">&#9711;</span>
+                <span class="amb-benefit-lbl" data-i18n="amb.b3">Crecimiento juntas</span>
+              </div>
+              <div class="amb-benefit-item">
+                <span class="amb-benefit-icon">&#9645;</span>
+                <span class="amb-benefit-lbl" data-i18n="amb.b4">Descuentos especiales</span>
+              </div>
+            </div>
+          </div>
+          <div class="b2a-media">
+            <div class="img-wrap r-wide" style="max-width:280px;margin-bottom:24px">
+              <img src="assets/images/ambassadors/ambassador-cta.jpg"
+                   alt="Embajadora MARARE"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="ph r-wide" style="display:none;max-width:280px">
+                <span class="ph-tag">AMB</span>
+                <span class="ph-lbl">assets/images/ambassadors/&#10;ambassador-cta.jpg</span>
+              </div>
+            </div>
+            <button onclick="window.open('https://www.instagram.com/marare.mx','_blank')"
+                    class="btn btn-outline-dark" data-i18n="amb.cta">
+              Quiero ser Embajadora &#8594;
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. INSTAGRAM -->
+  <section id="instagram">
+    <div class="container">
+      <div class="reveal" style="text-align:center">
+        <span class="ig-icon">&#9711;</span>
+        <span class="section-label"
+              style="color:rgba(201,169,110,.7)"
+              data-i18n="ig.label">Instagram</span>
+        <h2 class="ig-handle">@marare.mx</h2>
+        <p class="ig-sub" data-i18n="ig.sub">
+          Descubre nuevas piezas y momentos en @marare.mx
+        </p>
+        <a href="https://www.instagram.com/marare.mx"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-outline-dark"
+           data-i18n="ig.btn">Ver Instagram &#8599;</a>
+
+        <div class="ig-grid">
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ig-slot"></a>
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ig-slot"></a>
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ig-slot"></a>
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ig-slot"></a>
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ig-slot"></a>
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ig-slot"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTACT -->
+  <section id="contacto">
+    <div class="container">
+
+      <div class="contact-header reveal">
+        <span class="section-label"
+              style="color:rgba(201,169,110,.65)"
+              data-i18n="contact.label">Contacto</span>
+        <h2 class="contact-title" data-i18n="contact.title">Hablemos</h2>
+        <p class="contact-sub" data-i18n="contact.sub">
+          Pedidos por Instagram y DMs · Disponibles para ti
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="reveal">
+          <p class="ch-label" data-i18n="contact.infoLabel">Pedidos &amp; Consultas</p>
+
+          <a href="https://wa.me/527445875253" target="_blank" rel="noopener" class="ch-row">
+            <span class="ch-icon">&#9671;</span>
+            <div>
+              <p class="ch-name">WhatsApp</p>
+              <p class="ch-hint">74 4587 5253 &nbsp;·&nbsp; 55 8700 7598</p>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/marare.mx" target="_blank" rel="noopener" class="ch-row">
+            <span class="ch-icon">&#9711;</span>
+            <div>
+              <p class="ch-name">Instagram</p>
+              <p class="ch-val">@marare.mx</p>
+            </div>
+          </a>
+
+          <a href="mailto:hola@marare.mx" class="ch-row">
+            <span class="ch-icon">&#9679;</span>
+            <div>
+              <p class="ch-name">Email</p>
+              <p class="ch-val">hola@marare.mx</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="reveal reveal-d2">
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text"
+                     id="fName"
+                     name="fName"
+                     class="luxury-field"
+                     data-i18n-ph="contact.name"
+                     placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <input type="email"
+                     id="fEmail"
+                     name="fEmail"
+                     class="luxury-field"
+                     data-i18n-ph="contact.email"
+                     placeholder="Tu correo">
+            </div>
+            <div class="form-group">
+              <textarea class="luxury-field"
+                        id="fMsg"
+                        name="fMsg"
+                        rows="4"
+                        data-i18n-ph="contact.msg"
+                        placeholder="Tu mensaje"></textarea>
+            </div>
+            <button type="submit"
+                    class="btn btn-gold"
+                    data-i18n="contact.btn">
+              Enviar por WhatsApp &#8594;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand-col">
+          <span class="footer-brand-name">MARARE</span>
+          <span class="footer-brand-tag" data-i18n="footer.tag">
+            Joyería Atemporal · Hecho en México
+          </span>
+          <p class="footer-brand-desc" data-i18n="footer.desc">
+            Joyería que eleva cada momento. Piezas únicas, como tú.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/marare.mx"
+               target="_blank" rel="noopener"
+               class="footer-social-btn" title="Instagram">&#9711;</a>
+            <a href="https://wa.me/527445875253"
+               target="_blank" rel="noopener"
+               class="footer-social-btn" title="WhatsApp">&#9671;</a>
+            <a href="#" class="footer-social-btn" title="TikTok">&#9656;</a>
+            <a href="#" class="footer-social-btn" title="Pinterest">&#9643;</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-col-title" data-i18n="footer.tienda">Tienda</p>
+          <ul class="footer-links">
+            <li><a href="#tienda" data-i18n="filter.collares">Collares</a></li>
+            <li><a href="#tienda" data-i18n="filter.aretes">Aretes</a></li>
+            <li><a href="#tienda" data-i18n="filter.pulseras">Pulseras</a></li>
+            <li><a href="#tienda" data-i18n="filter.anillos">Anillos</a></li>
+            <li><a href="#tienda" data-i18n="footer.accesorios">Accesorios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title" data-i18n="footer.info">Información</p>
+          <ul class="footer-links">
+            <li><a href="#nosotras" data-i18n="nav.nosotras">Nosotros</a></li>
+            <li><a href="#" data-i18n="footer.envios">Envíos</a></li>
+            <li><a href="#" data-i18n="footer.cambios">Cambios y devoluciones</a></li>
+            <li><a href="#" data-i18n="footer.terminos">Términos y condiciones</a></li>
+            <li><a href="#" data-i18n="footer.privacidad">Políticas de privacidad</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title" data-i18n="footer.ayuda">Ayuda</p>
+          <ul class="footer-links">
+            <li><a href="#" data-i18n="footer.faq">Preguntas frecuentes</a></li>
+            <li><a href="#" data-i18n="footer.tallas">Guía de tallas</a></li>
+            <li><a href="#" data-i18n="footer.pagos">Formas de pago</a></li>
+            <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title" data-i18n="footer.newsletter">Newsletter</p>
+          <p style="font-family:'Manrope',sans-serif;font-size:10px;color:rgba(245,230,200,.38);line-height:1.6;margin-bottom:16px;letter-spacing:.06em"
+             data-i18n="footer.newsletterDesc">
+            Recibe novedades y promociones exclusivas.
+          </p>
+          <div class="newsletter-input-wrap">
+            <input type="email"
+                   class="newsletter-input"
+                   data-i18n-ph="footer.emailPh"
+                   placeholder="Tu correo electrónico">
+            <button class="newsletter-btn">&#8594;</button>
+          </div>
+          <p class="newsletter-note" data-i18n="footer.newsletterNote">
+            Sin spam. Solo lo que importa.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.rights">
+          &#169; 2024 MARARE. Todos los derechos reservados.
+        </p>
+        <div class="footer-bottom-badges">
+          <span class="footer-bottom-badge">&#9671; Acero Inoxidable</span>
+          <span class="footer-bottom-badge">&#9711; Resistente al Agua</span>
+          <span class="footer-bottom-badge">&#9645; Pago Seguro</span>
+          <span class="footer-bottom-badge">&#9670; Envíos a Todo MX</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+
+</body>
+</html>
