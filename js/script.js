@@ -471,30 +471,6 @@ function closeAllDropdowns() {
   document.body.classList.remove('dropdown-open');
 }
 
-/* Trigger button — direct listener so iOS inside scrollable container always fires */
-$$('.filter-dropdown').forEach(dd => {
-  const btn  = dd.querySelector('.filter-btn');
-  const menu = dd.querySelector('.filter-dropdown-menu');
-  if (!btn || !menu) return;
-
-  const handleToggle = e => {
-    e.stopPropagation();
-    const willOpen = !menu.classList.contains('open');
-    closeAllDropdowns();
-    if (willOpen) {
-      menu.classList.add('open');
-      document.body.classList.add('dropdown-open');
-    }
-  };
-
-  btn.addEventListener('click', handleToggle);
-  /* touchend for reliability inside -webkit-overflow-scrolling:touch containers */
-  btn.addEventListener('touchend', e => {
-    e.preventDefault();   /* block synthesised click so handleToggle runs once */
-    handleToggle(e);
-  }, { passive: false });
-});
-
 /* Dropdown item selection */
 $$('.fdm-item[data-filter]').forEach(item => {
   item.addEventListener('click', e => {
@@ -531,11 +507,32 @@ $('filterNew').addEventListener('click', () => {
 
 $('loadMoreBtn').addEventListener('click', () => { visibleCount += 8; renderProducts(); });
 
-/* Close on outside click / tap */
-document.addEventListener('click', closeAllDropdowns);
-document.addEventListener('touchend', e => {
-  if (!e.target.closest('.filter-dropdown')) closeAllDropdowns();
-}, { passive: true });
+/*
+ * Dropdown toggle — single document-level handler covers desktop click
+ * and mobile synthesised click. Checks the target before acting:
+ *   • outside dropdown        → close
+ *   • inside menu (fdm-item)  → do nothing (fdm-item handler already ran)
+ *   • inside trigger button   → toggle
+ */
+document.addEventListener('click', e => {
+  const dd     = e.target.closest('.filter-dropdown');
+  const inMenu = e.target.closest('.filter-dropdown-menu');
+
+  if (!dd) {
+    closeAllDropdowns();
+    return;
+  }
+  if (inMenu) return; /* fdm-item click handler already closed it */
+
+  /* Trigger button tapped/clicked */
+  const menu = dd.querySelector('.filter-dropdown-menu');
+  const willOpen = !menu.classList.contains('open');
+  closeAllDropdowns();
+  if (willOpen) {
+    menu.classList.add('open');
+    document.body.classList.add('dropdown-open');
+  }
+});
 
 /* ══════════════════════════════
    PRODUCT MODAL
