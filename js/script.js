@@ -466,11 +466,36 @@ $$('.filter-btn[data-filter]').forEach(btn => {
   });
 });
 
-function syncDropdownState() {
-  const isOpen = !!document.querySelector('.filter-dropdown-menu.open');
-  document.body.classList.toggle('dropdown-open', isOpen);
+function closeAllDropdowns() {
+  $$('.filter-dropdown-menu').forEach(m => m.classList.remove('open'));
+  document.body.classList.remove('dropdown-open');
 }
 
+/* Trigger button — direct listener so iOS inside scrollable container always fires */
+$$('.filter-dropdown').forEach(dd => {
+  const btn  = dd.querySelector('.filter-btn');
+  const menu = dd.querySelector('.filter-dropdown-menu');
+  if (!btn || !menu) return;
+
+  const handleToggle = e => {
+    e.stopPropagation();
+    const willOpen = !menu.classList.contains('open');
+    closeAllDropdowns();
+    if (willOpen) {
+      menu.classList.add('open');
+      document.body.classList.add('dropdown-open');
+    }
+  };
+
+  btn.addEventListener('click', handleToggle);
+  /* touchend for reliability inside -webkit-overflow-scrolling:touch containers */
+  btn.addEventListener('touchend', e => {
+    e.preventDefault();   /* block synthesised click so handleToggle runs once */
+    handleToggle(e);
+  }, { passive: false });
+});
+
+/* Dropdown item selection */
 $$('.fdm-item[data-filter]').forEach(item => {
   item.addEventListener('click', e => {
     e.stopPropagation();
@@ -482,8 +507,7 @@ $$('.fdm-item[data-filter]').forEach(item => {
     $$('.filter-btn').forEach(b => b.classList.remove('active'));
     $('filterAll').classList.add('active');
     renderProducts();
-    $$('.filter-dropdown-menu').forEach(m => m.classList.remove('open'));
-    syncDropdownState();
+    closeAllDropdowns();
   });
 });
 
@@ -507,14 +531,11 @@ $('filterNew').addEventListener('click', () => {
 
 $('loadMoreBtn').addEventListener('click', () => { visibleCount += 8; renderProducts(); });
 
-document.addEventListener('click', e => {
-  const dd = e.target.closest('.filter-dropdown');
-  $$('.filter-dropdown-menu').forEach(m => {
-    if (dd && m.closest('.filter-dropdown') === dd) m.classList.toggle('open');
-    else m.classList.remove('open');
-  });
-  syncDropdownState();
-});
+/* Close on outside click / tap */
+document.addEventListener('click', closeAllDropdowns);
+document.addEventListener('touchend', e => {
+  if (!e.target.closest('.filter-dropdown')) closeAllDropdowns();
+}, { passive: true });
 
 /* ══════════════════════════════
    PRODUCT MODAL
