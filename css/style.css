@@ -33,11 +33,12 @@
    RESET & BASE
 ══════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 body { background: var(--bg); color: var(--text); overflow-x: hidden; font-family: 'Manrope', sans-serif; }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; }
 input, textarea { font-family: inherit; }
+img { max-width: 100%; height: auto; display: block; }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -405,6 +406,8 @@ input, textarea { font-family: inherit; }
   gap: 40px;
   transform: translateX(100%);
   transition: transform .45s var(--ease);
+  will-change: transform;
+  overflow: hidden;
 }
 #mobileNav.open { transform: translateX(0); }
 .mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 28px; }
@@ -747,7 +750,7 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════
    TIENDA / CATALOG
 ══════════════════════════════ */
-#tienda { padding: 100px 0; }
+#tienda { padding: 100px 0; overflow-x: clip; }
 .tienda-header {
   display: flex;
   align-items: flex-end;
@@ -786,7 +789,14 @@ input, textarea { font-family: inherit; }
   border-color: var(--wine);
   color: var(--cream);
 }
-.filter-dropdown { position: relative; display: inline-block; }
+.filter-dropdown { position: relative; display: inline-block; z-index: 400; }
+#ddBackdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  cursor: default;
+}
 .filter-dropdown-menu {
   position: absolute;
   top: calc(100% + 6px);
@@ -795,7 +805,7 @@ input, textarea { font-family: inherit; }
   border: 1px solid var(--border);
   border-radius: 4px;
   min-width: 160px;
-  z-index: 50;
+  z-index: 500;
   box-shadow: 0 8px 24px rgba(42,26,14,.1);
   display: none;
 }
@@ -993,7 +1003,7 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════
    AMBASSADOR CATALOGS
 ══════════════════════════════ */
-#catalogo-embajadoras { padding: 100px 0; background: var(--bg); }
+#catalogo-embajadoras { padding: 100px 0; background: var(--bg); overflow-x: clip; }
 .cat-emb-intro {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1128,7 +1138,7 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════
    B2B + AMBASSADOR CTA
 ══════════════════════════════ */
-#b2b-ambassador { padding: 100px 0; background: var(--bg2); }
+#b2b-ambassador { padding: 100px 0; background: var(--bg2); overflow-x: clip; }
 .b2a-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
 .b2a-card {
   position: relative;
@@ -1212,7 +1222,7 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════
    INSTAGRAM
 ══════════════════════════════ */
-#instagram { background: var(--wine); padding: 90px 0; text-align: center; }
+#instagram { background: var(--wine); padding: 90px 0; text-align: center; overflow-x: clip; }
 .ig-icon {
   color: var(--gold);
   display: flex;
@@ -1241,6 +1251,7 @@ input, textarea { font-family: inherit; }
   gap: 4px;
   max-width: 840px;
   margin: 56px auto 0;
+  overflow: hidden;
 }
 .ig-slot {
   aspect-ratio: 1 / 1;
@@ -1262,7 +1273,7 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════
    CONTACT
 ══════════════════════════════ */
-#contacto { background: var(--dark); padding: 110px 0; }
+#contacto { background: var(--dark); padding: 110px 0; overflow-x: clip; }
 .contact-header { text-align: center; margin-bottom: 72px; }
 .contact-title {
   font-family: 'Playfair Display', serif;
@@ -1352,6 +1363,7 @@ footer {
   background: #1a0a0a;
   padding: 64px 0 36px;
   border-top: 1px solid rgba(201,169,110,.1);
+  overflow-x: clip;
 }
 .footer-top {
   display: grid;
@@ -1570,7 +1582,7 @@ footer {
     max-width: min(260px, calc(100vw - 40px));
     left: 0;
     right: auto;
-    z-index: 200;
+    z-index: 500;
     border-radius: 8px;
     box-shadow: 0 16px 48px rgba(42,26,14,.22);
   }
