@@ -750,7 +750,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* ══════════════════════════════
    TIENDA / CATALOG
 ══════════════════════════════ */
-#tienda { padding: 100px 0; overflow-x: clip; }
+#tienda { padding: 100px 0; }
 .tienda-header {
   display: flex;
   align-items: flex-end;
@@ -790,13 +790,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--cream);
 }
 .filter-dropdown { position: relative; display: inline-block; z-index: 400; }
-#ddBackdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 300;
-  cursor: default;
-}
+body.dropdown-open .product-grid { pointer-events: none; }
 .filter-dropdown-menu {
   position: absolute;
   top: calc(100% + 6px);

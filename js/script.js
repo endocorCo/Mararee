@@ -466,17 +466,14 @@ $$('.filter-btn[data-filter]').forEach(btn => {
   });
 });
 
-/* Backdrop — intercepts pointer events on the grid while dropdown is open */
-const ddBackdrop = document.createElement('div');
-ddBackdrop.id = 'ddBackdrop';
-document.body.appendChild(ddBackdrop);
-
-function syncBackdrop() {
-  ddBackdrop.style.display = document.querySelector('.filter-dropdown-menu.open') ? 'block' : 'none';
+function syncDropdownState() {
+  const isOpen = !!document.querySelector('.filter-dropdown-menu.open');
+  document.body.classList.toggle('dropdown-open', isOpen);
 }
 
 $$('.fdm-item[data-filter]').forEach(item => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', e => {
+    e.stopPropagation();
     currentFilter = item.dataset.filter;
     currentSort   = null;
     visibleCount  = 8;
@@ -486,7 +483,7 @@ $$('.fdm-item[data-filter]').forEach(item => {
     $('filterAll').classList.add('active');
     renderProducts();
     $$('.filter-dropdown-menu').forEach(m => m.classList.remove('open'));
-    syncBackdrop();
+    syncDropdownState();
   });
 });
 
@@ -516,7 +513,7 @@ document.addEventListener('click', e => {
     if (dd && m.closest('.filter-dropdown') === dd) m.classList.toggle('open');
     else m.classList.remove('open');
   });
-  syncBackdrop();
+  syncDropdownState();
 });
 
 /* ══════════════════════════════
